@@ -1,4 +1,4 @@
-export class Conta{
+export abstract class Conta {
 
     private _numero: number;
     private _agencia: number;
@@ -54,18 +54,19 @@ export class Conta{
         this._saldo = saldo;
     }
 
-    public sacar(valor: number): boolean{
-        if(this._saldo < valor){
-            console.log("\n Saldo insuficiente!");
+    public sacar(valor: number): boolean {
+
+        if (this._saldo < valor) {
+            console.log("\n Saldo Insuficiente!");
             return false;
         }
 
-        this._saldo -= valor;
+        this._saldo = this._saldo - valor;
         return true;
     }
 
-    public depositar(valor: number): void{
-        this._saldo += valor;
+    public depositar(valor: number): void {
+        this._saldo = this._saldo + valor;
     }
 
     public visualizar(): void {
@@ -81,9 +82,9 @@ export class Conta{
                 break;
         }
 
-        console.log("\n\n****************************************************************************************");
+        console.log("\n\n*****************************************************");
         console.log("Dados da Conta:");
-        console.log("****************************************************************************************");
+        console.log("*****************************************************");
         console.log("Numero da Conta: " + this._numero);
         console.log("Agência: " + this._agencia);
         console.log("Tipo da Conta: " + tipo);
@@ -91,4 +92,5 @@ export class Conta{
         console.log("Saldo: " + this._saldo.toFixed(2));
 
     }
+
 }
